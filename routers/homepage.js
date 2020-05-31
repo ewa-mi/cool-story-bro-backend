@@ -27,7 +27,9 @@ router.patch("/edit", auth, async (req, res) => {
       { where: { id } }
     );
 
-    return res.status(200);
+    const homepages = await Homepage.findAll();
+
+    return res.status(200).send(homepages);
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: "Something went wrong, sorry" });
