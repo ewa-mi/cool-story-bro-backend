@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const homepageRouter = require("./routers/homepage");
+const storyRouter = require("./routers/story");
 const authRouter = require("./routers/auth");
 const loggerMiddleWare = require("morgan");
 const bodyParserMiddleWare = express.json();
@@ -20,6 +21,7 @@ if (process.env.DELAY) {
 }
 
 app.use("/homepages", homepageRouter);
+app.use("/stories", storyRouter);
 
 app.use("/", authRouter);
 
