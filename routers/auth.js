@@ -48,16 +48,20 @@ router.post("/signup", async (req, res) => {
       name,
     });
 
-    await Homepage.create({
+    const newHomepage = await Homepage.create({
       title: `${newUser.name}'s page`,
       userId: newUser.id,
+      backgroundColor: "#fff",
+      color: "#000",
     });
 
     delete newUser.dataValues["password"]; // don't send back the password hash
 
     const token = toJWT({ userId: newUser.id });
 
-    res.status(201).json({ token, ...newUser.dataValues });
+    res
+      .status(201)
+      .json({ token, ...newUser.dataValues, ...newHomepage.dataValues });
   } catch (error) {
     if (error.name === "SequelizeUniqueConstraintError") {
       return res

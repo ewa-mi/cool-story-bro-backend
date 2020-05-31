@@ -22,7 +22,6 @@ if (process.env.DELAY) {
 
 app.use("/homepages", homepageRouter);
 app.use("/stories", storyRouter);
-
 app.use("/", authRouter);
 
 app.listen(PORT, () => {
