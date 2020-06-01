@@ -51,8 +51,8 @@ router.post("/signup", async (req, res) => {
     const newHomepage = await Homepage.create({
       title: `${newUser.name}'s page`,
       userId: newUser.id,
-      backgroundColor: "#fff",
-      color: "#000",
+      backgroundColor: "#ffffff",
+      color: "#000000",
     });
 
     delete newUser.dataValues["password"]; // don't send back the password hash
